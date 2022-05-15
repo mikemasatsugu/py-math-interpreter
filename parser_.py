@@ -91,7 +91,16 @@ class Parser:
   def factor(self):
     token = self.current_token
 
-    if token.type == TokenType.NUMBER:
+    if token.type == TokenType.LPAREN:
+      self.advance()
+      result = self.expr()
+      
+      if self.current_token.type != TokenType.RPAREN:
+        self.raise_error()
+      self.advance()
+      return result
+
+    elif token.type == TokenType.NUMBER:
       self.advance()
       return NumberNode(token.value)
     elif token.type == TokenType.PLUS:
