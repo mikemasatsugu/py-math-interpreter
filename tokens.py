@@ -9,7 +9,7 @@ E.g.: 1 + 2.2 * 3 => Token 1: { type: NUMBER, value: 1 }
 '''
 
 from enum import Enum
-from dataclass import dataclass
+from dataclasses import dataclass
 
 class TokenType(Enum):
   NUMBER   = 0
